@@ -1,14 +1,24 @@
 <p>register works!</p>
-<div id="registerContainer" *ngIf="account">
-    <h2>Welcome {{account.firstName}}</h2>
-    <form>
-        <input [(ngModel)]="account.firstName" class="input" placeholder ="First Name">
-        <input [(ngModel)]="account.lastName" class="input" placeholder="Last Name">
-        <input [(ngModel)]="account.email" type="email" class="input" placeholder="Email">
-        <input [(ngModel)]="account.password" type="password" class="input" placeholder="Password">
-        <input class="input" placeholder="Give your pantry a name">
-    </form>
-    <button (click)="registerAccount(account)" *ngIf="!account.id">
-        Register
-    </button>
-</div>
+
+<mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input name="email" type="email" matInput [(ngModel)]="account.email" placeholder="email@email.com">
+</mat-form-field><br>
+<mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input name="password" matInput type="password" [(ngModel)]="account.password">
+</mat-form-field><br>
+<mat-form-field appearance="fill">
+    <mat-label>Your Pantry</mat-label>
+    <input name="pantry" matInput type="input" [(ngModel)]="account.pantry">
+</mat-form-field><br>
+<mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input name="firstName" matInput  [(ngModel)]="account.firstName">
+</mat-form-field><br>
+<mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input name="lastName" matInput [(ngModel)]="account.lastName">
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+</mat-form-field><br>
+

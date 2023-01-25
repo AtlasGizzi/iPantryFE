@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Account } from '../data/account';
+import { RegisterService } from './register.service';
 
 
 @Component({
@@ -8,16 +9,15 @@ import { Account } from '../data/account';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
-  // @Input() account?: Account;
-  account: any = {}
-  constructor() {}
+  newAccount: Account = new Account(0,'','','','','')
+
+  //account: any = {}
+  constructor(private registerService: RegisterService) {}
   ngOnInit(): void {
   }
   registerAccount() {
-    console.log(this.account)
+    //console.log(this.account)
+    this.registerService.SubmitRegister(this.newAccount)
   }
-  ValidateRegister(email: string, password: string, firstName: string, lastName: string, pantry: string)
-  {
-    console.log(this.account)
-  }
+ 
 }

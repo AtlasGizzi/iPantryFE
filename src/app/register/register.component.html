@@ -1,24 +1,24 @@
 <p>register works!</p>
-
-<mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input name="email" type="email" matInput [(ngModel)]="account.email" placeholder="email@email.com">
-</mat-form-field><br>
-<mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
-    <input name="password" matInput type="password" [(ngModel)]="account.password">
-</mat-form-field><br>
-<mat-form-field appearance="fill">
-    <mat-label>Your Pantry</mat-label>
-    <input name="pantry" matInput type="input" [(ngModel)]="account.pantry">
-</mat-form-field><br>
-<mat-form-field appearance="fill">
-    <mat-label>First Name</mat-label>
-    <input name="firstName" matInput  [(ngModel)]="account.firstName">
-</mat-form-field><br>
-<mat-form-field appearance="fill">
-    <mat-label>Last Name</mat-label>
-    <input name="lastName" matInput [(ngModel)]="account.lastName">
-    <button mat-raised-button color="primary" type="submit">Submit</button>
-</mat-form-field><br>
-
+<form ngForm (ngSubmit)="registerAccount()">
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input name="email" type="email" matInput [(ngModel)]="newAccount.email" placeholder="email@email.com">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input name="password" matInput type="password" [(ngModel)]="newAccount.password">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Your Pantry</mat-label>
+        <input name="pantry" matInput type="input" [(ngModel)]="newAccount.pantry">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input name="firstName" matInput  [(ngModel)]="newAccount.firstName">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input name="lastName" matInput [(ngModel)]="newAccount.lastName">
+        <button mat-raised-button color="primary" type="submit">Register</button>
+    </mat-form-field><br>
+</form>

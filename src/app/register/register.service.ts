@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ErrorAlertService } from '../error-alert.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject, take } from 'rxjs';
 import { AccountService } from '../account/account.service';
@@ -23,8 +23,8 @@ export class RegisterService {
   constructor
   (
     private http: HttpClient,
-    private snackBar: MatSnackBar,
-    private erroralert: ErrorAlertService,
+   
+   
     private accountService: AccountService,
   ) {}
   
@@ -61,15 +61,15 @@ public SubmitRegister(newAccount: Account) {
     .subscribe({
       next: () => {
 
-        this.erroralert.showError('Registered Successfully!')
+        
         this.$showLogin.next(true)
         this.$showRegister.next(false)
 
       },
-      error: (err) => {
-        if (err.status === 409) {
-          this.erroralert.showError('Email already exists.')
-        }
-      }
+      // error: (err) => {
+      //   if (err.status === 409) {
+      //     this.erroralert.showError('Email already exists.')
+      //   }
+      // }
     })
 }}

@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { AccountService } from './account/account.service';
+import { Account } from './data/account';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'iPantryFE';
-  accounts: any;
-  constructor(private httpClient: HttpClient) 
+  accounts: Account[] = [];
+  constructor(private accountService: AccountService) 
   {
-    let request = httpClient.get("https://")
+    
   }
   ngOnInit(): void { 
-      this.httpClient.get('https://localhost:7287/api').subscribe({
-        next: (response) => this.accounts = response,
-        error: (error) => console.log(error),
-        complete: () => console.log('Request has completed') 
-      })
+        this.accountService.getAllAccounts().subscribe((result: Account[]) => (this.accounts = result));
+      }
   }
-}
+
+  

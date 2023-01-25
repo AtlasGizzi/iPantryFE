@@ -1,13 +1,14 @@
 <p>register works!</p>
-<div id="registerContainer">
+<div id="registerContainer" *ngIf="account">
+    <h2>Welcome {{account.firstName}}</h2>
     <form>
-        <input class="input" value="First Name">
-        <input class="input" value="Last Name">
-        <input type="email" class="input" value="Email">
-        <input type="password" class="input" value="Password">
-        <input class="input" value="Give your pantry a name">
+        <input [(ngModel)]="account.firstName" class="input" placeholder ="First Name">
+        <input [(ngModel)]="account.lastName" class="input" placeholder="Last Name">
+        <input [(ngModel)]="account.email" type="email" class="input" placeholder="Email">
+        <input [(ngModel)]="account.password" type="password" class="input" placeholder="Password">
+        <input class="input" placeholder="Give your pantry a name">
     </form>
-    <button>
+    <button (click)="registerAccount(account)" *ngIf="!account.id">
         Register
     </button>
 </div>

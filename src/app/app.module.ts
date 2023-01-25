@@ -13,6 +13,7 @@ import { AccountComponent } from './account/account.component';
 import { RedditComponent } from './reddit/reddit.component';
 import { FamilyConnectComponent } from './family-connect/family-connect.component';
 import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule
     
   ],
   providers: [],

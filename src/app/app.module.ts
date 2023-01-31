@@ -11,8 +11,8 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { MakeThisRecipeComponent } from './make-this-recipe/make-this-recipe.component';
 import { AccountComponent } from './account/account.component';
 import { RedditComponent } from './reddit/reddit.component';
-import { FamilyConnectComponent } from './family-connect/family-connect.component';
 import { RegisterComponent } from './register/register.component';
+
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input'
@@ -29,7 +29,6 @@ import {MatSelectModule} from '@angular/material/select';
     MakeThisRecipeComponent,
     AccountComponent,
     RedditComponent,
-    FamilyConnectComponent,
     RegisterComponent
   ],
   imports: [

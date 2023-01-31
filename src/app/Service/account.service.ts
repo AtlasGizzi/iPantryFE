@@ -8,27 +8,28 @@ import { Observable, take } from 'rxjs';
   providedIn: 'root'
 })
 export class AccountService {
-
+ 
  constructor(
     private http: HttpClient,
-
+    private Account: Account,
   ) { }
+  
   public getAllAccounts() : Observable<Account[]>
   {
     return this.http.get<Account[]>("https://localhost:7287/api/Account");
   }
-  // public currentAccount: Account = new Account(0, '', '', '','');
+  // public Account: Account = new Account(0, '', '', '','');
 
-  // public getAccount(accountEmail: string | undefined)
-  // { 
-  //   this.http.get<Account>(`https://localhost:7287/api/Account/${accountEmail}`)
-  //   .pipe(take(1))
-  //   .subscribe({
-  //     next: (res) => {
-  //       this.currentAccount = res;
-  //     },
-  //     error: () => console.log('error'),
-  //   });
-  // }
+  public getAccount(accountEmail: string | undefined)
+  { 
+    this.http.get<Account>(`https://localhost:7287/api/Account/${accountEmail}`)
+    .pipe(take(1))
+    .subscribe({
+      next: (res) => {
+        this.Account = res;
+      },
+      error: () => console.log('error'),
+    });
+  }
 
 }

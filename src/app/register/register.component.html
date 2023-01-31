@@ -1,5 +1,5 @@
 <p>register works!</p>
-<form ngForm (ngSubmit)="registerAccount()">
+<form ngForm (ngSubmit)="registerAccount(newAccount)">
     <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input name="email" type="email" matInput [(ngModel)]="newAccount.email" placeholder="email@email.com">
@@ -22,3 +22,19 @@
         <button mat-raised-button color="primary" type="submit">Register</button>
     </mat-form-field><br>
 </form>
+<table>
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+       
+    </thead>
+    <tbody>
+        <tr *ngFor="let account of account">
+            <td>{{account.firstName}}</td>
+            <td>{{account.lastName}}</td>
+            <td>{{account.email}}</td>
+            
+        </tr>
+    </tbody>
+</table>

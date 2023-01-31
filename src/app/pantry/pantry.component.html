@@ -1,1 +1,9 @@
 <p>pantry works!</p>
+<div *ngIf="authService.isAuthenticated()">
+    <p>Welcome, {{account.name}}</p>
+    <app-pantry></app-pantry>
+  </div>
+  <div *ngIf="!authService.isAuthenticated()">
+    <p>Please log in to access your pantry</p>
+  </div>
+  

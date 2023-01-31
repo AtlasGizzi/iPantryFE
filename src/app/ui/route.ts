@@ -1,0 +1,10 @@
+export enum Route {
+  HOME,
+  LOGIN,
+  REGISTER,
+  PANTRY,
+  REDDIT,
+  RECIPES,
+  FAMILYCONNECT,
+  ACCOUNT,
+}

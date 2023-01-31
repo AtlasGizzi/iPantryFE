@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { AccountService } from './Service/account.service';
-import { Account } from './data/account';
-import { RegisterService } from './Service/register.service';
+import { UiService } from './ui/ui.service';
+
+import { Route } from './ui/route'
+
 
 @Component({
   selector: 'app-root',
@@ -11,16 +10,16 @@ import { RegisterService } from './Service/register.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{ 
-  accounts: Account[] = [];
   title = 'iPantryFE';
   
-  constructor(private accountService: AccountService) 
+  
+  constructor(private UiService: UiService, private Route: Route) 
   {
    
   }
-  ngOnInit(): void { 
-        this.accountService.getAllAccounts().subscribe((result: Account[]) => (this.accounts = result));
-      }
+  // ngOnInit(): void { 
+  //   this.accountService.getAllAccounts().subscribe((result: Account[]) => (this.accounts = result));
+  // }
   }
 
   

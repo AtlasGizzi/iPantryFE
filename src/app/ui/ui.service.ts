@@ -15,7 +15,7 @@ export class UiService {
   public getCurrentRoute(): Route {
     return this.currentRoute;
   }
-  public persistRoute(): void {
+  public persistRoute(): void { //checking the route from local storage and if
     let storedRoute = localStorage.getItem('current_route');
     if (storedRoute) this.setCurrentRoute(JSON.parse(storedRoute));
   }

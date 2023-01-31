@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UiService } from '../ui/ui.service';
+
 import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject, take } from 'rxjs';
 import { AccountService } from './account.service';
@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegisterService {
   
-  private newAccount : Account[] = [] // new account is a type of Account from the data/account class with an array of properties. It is initalized with empty values.
+  //private newAccount : Account[] = [] // new account is a type of Account from the data/account class with an array of properties. It is initalized with empty values.
   public isLoggedIn = false
   private pathurl = 'https://localhost:7287/api/'
 

@@ -1,8 +1,10 @@
 <app-login></app-login>
-<app-register></app-register>
-<app-account></app-account>
-<app-pantry></app-pantry>
-<app-recipes></app-recipes>
-<app-navigation></app-navigation>
-<app-make-this-recipe></app-make-this-recipe>
-<app-reddit></app-reddit>
+<mat-sidenav-content [ngSwitch]="ui.getCurrentRoute()">
+    <app-register *ngSwitchCase="route.REGISTER"></app-register>
+    <app-account *ngSwitchCase="route.ACCOUNT"></app-account>
+    <app-pantry *ngSwitchCase="route.PANTRY"></app-pantry>
+    <app-recipes *ngSwitchCase="route.RECIPES"></app-recipes>
+    <app-navigation></app-navigation>
+    <app-make-this-recipe *ngSwitchCase="route.MAKETHISRECIPE"></app-make-this-recipe>
+    <app-reddit></app-reddit>
+</mat-sidenav-content>

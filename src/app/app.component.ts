@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UiService } from './ui/ui.service';
-
-import { Route } from './ui/route'
+import { Route } from './ui/route';
 
 
 @Component({
@@ -11,9 +10,9 @@ import { Route } from './ui/route'
 })
 export class AppComponent{ 
   title = 'iPantryFE';
+  public route = Route; //I'm note sure why this works. Is it just saying that route value is the value of Route from Route? Is this an enum thing?
   
-  
-  constructor(private UiService: UiService, private Route: Route) 
+  constructor(public ui: UiService) 
   {
    
   }

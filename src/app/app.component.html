@@ -1,6 +1,5 @@
 <app-login></app-login>
 <mat-sidenav-content [ngSwitch]="ui.getCurrentRoute()">
-    <app-register *ngSwitchCase="route.REGISTER"></app-register>
     <app-account *ngSwitchCase="route.ACCOUNT"></app-account>
     <app-pantry *ngSwitchCase="route.PANTRY"></app-pantry>
     <app-recipes *ngSwitchCase="route.RECIPES"></app-recipes>

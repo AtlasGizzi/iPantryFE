@@ -11,12 +11,15 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { MakeThisRecipeComponent } from './make-this-recipe/make-this-recipe.component';
 import { AccountComponent } from './account/account.component';
 import { RedditComponent } from './reddit/reddit.component';
-import { RegisterComponent } from './register/register.component';
+
 
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input'
 import {MatSelectModule} from '@angular/material/select';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -29,7 +32,7 @@ import {MatSelectModule} from '@angular/material/select';
     MakeThisRecipeComponent,
     AccountComponent,
     RedditComponent,
-    RegisterComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,10 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSnackBarModule,
     
   ],
   providers: [],

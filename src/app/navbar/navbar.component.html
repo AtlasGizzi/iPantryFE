@@ -1,0 +1,34 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+   
+  
+        
+        
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="this.ui.navigate(route.HOME);">
+                <mat-icon>home</mat-icon>
+            </button>
+            <button mat-menu-item (click)="this.ui.navigate(route.PANTRY);">
+                <mat-icon>kitchen</mat-icon>
+            </button>
+            <button mat-menu-item (click)="this.ui.navigate(route.RECIPES);">
+                <mat-icon>library_books</mat-icon>
+            </button>
+            <button mat-menu-item (click)="this.ui.navigate(route.FAMILYCONNECT);">
+                <mat-icon>people_outline</mat-icon>
+            </button>
+            <button mat-menu-item (click)="this.ui.navigate(route.ACCOUNT);">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </mat-menu>
+        <button (click)="login.logout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+        
+        <h1>iPantry</h1>
+     
+    </mat-toolbar-row>
+  </mat-toolbar>

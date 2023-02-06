@@ -23,12 +23,12 @@ export class AccountService {
   
   public getAllAccounts() : Observable<Account[]>
   {
-    return this.http.get<Account[]>("https://localhost:7287/api/Account");
+    return this.http.get<Account[]>(this.pathurl + `Account`);
   }
 
   public getAccount(accountEmail: string | undefined)
   { 
-    this.http.get<Account>(`https://localhost:7287/api/Account/${accountEmail}`)
+    this.http.get<Account>(this.pathurl+`${accountEmail}`)
     .pipe(take(1))
     .subscribe({
       next: (res) => {
@@ -37,50 +37,31 @@ export class AccountService {
       error: () => console.log('error'),
     });
   }
-  public SubmitRegister(newAccount: Account) {
-    this.http.post(this.pathurl + `Account`,
-      {
-        ...newAccount //spread opperator is used to spread the properties of the "newAccount" object into a new object that is passed as the request body in the HTTP POST request.
-        }
-    )                                             
-      .pipe(take(1))
-      .subscribe({
-        next: () => {
-  
-            return
-        },
-        error: (err) => {
-          if (err.status === 409) {
-            this.errorAlert.showError('Email already exists.')
-          }
-        }
-      })
-    }
+  // public SubmitRegister(newAccount: Account) {
+  //   this.http.post(this.pathurl + `Account`,
+  //     {
+  //       ...newAccount //spread opperator is used to spread the properties of the "newAccount" object into a new object that is passed as the request body in the HTTP POST request.
+  //       }
+  //   )                                             
+  //     .pipe(take(1))
+  //     .subscribe({
+  //       next: () => {
+  //           return
+  //       },
+  //       error: (err) => {
+  //         if (err.status === 409) {
+  //           this.errorAlert.showError('Email already exists.')
+  //         }
+  //       }
+  //     })
+  //   }
   
 
-  public validateEmail(checkEmail: string){      
-    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailPattern.test(checkEmail); 
-  } 
-
-  public ValidateRegister(email: string, password: string, snackbar: MatSnackBar): void {
-    if (email == '' || email == null) {
-      this.errorAlert.showError('Email Required')
-      return
-    }
-    if (password == '' || password == null) {
-      this.errorAlert.showError('Password Required')
-      return
-    }
-    
-    if (this.validateEmail(email) === false){
-      this.errorAlert.showError('Email does not meet requirements Ex: Example@example.com')
-      return
-    }
+  
     
     
   };
   
 
 
-}
+

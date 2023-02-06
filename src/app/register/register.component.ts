@@ -10,17 +10,25 @@ import { RegisterService } from '../Service/register.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent{
-  newAccount: Account = new Account(0,'','','','','');
+  @Input() accountFromHomeComponent: any;
   //authService.login(account);
 
-  account: any = {}
-  constructor(private registerService: RegisterService) {
+  account: Account[] = []
+  firstName: string = ""
+  lastName: string = ""
+  email: string = ""
+  password: string = ""
+  //pantry: string = ""
+  constructor(public registerService: RegisterService) {
     //watchAccount method
   }
   
-  registerAccount(newAccount: Account) {
+  registerAccount( ): void {
     
-    this.registerService.SubmitRegister(this.newAccount)
+    this.registerService.SubmitRegister(this.firstName, this.lastName, this.email, this.password)
+  
+      console.log(this.firstName)
+  
   }
  
 }

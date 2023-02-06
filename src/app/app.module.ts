@@ -11,6 +11,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { MakeThisRecipeComponent } from './make-this-recipe/make-this-recipe.component';
 import { AccountComponent } from './account/account.component';
 import { RedditComponent } from './reddit/reddit.component';
+import { RegisterComponent } from './register/register.component';
 
 
 import { FormsModule } from '@angular/forms';
@@ -20,7 +21,11 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatBadgeModule } from '@angular/material/badge';
+import { HomeComponent } from './home/home.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +37,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MakeThisRecipeComponent,
     AccountComponent,
     RedditComponent,
+    HomeComponent,
+    RegisterComponent,
+    NavbarComponent
     
   ],
   imports: [
@@ -45,6 +53,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatToolbarModule,
     MatSnackBarModule,
+    MatSidenavModule,
+    MatBadgeModule,
+    MatMenuModule
     
   ],
   providers: [],

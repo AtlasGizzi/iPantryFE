@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+button {
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(114, 147, 160);
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    
+}
+mat-form-field {
+    border: none;
+    margin: auto;
+    border-radius: 5px;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: none;
+    background-color: rgb(226, 183, 153)
+
+}

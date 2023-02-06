@@ -10,11 +10,13 @@ import { PantryService } from '../Service/pantry.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-public Route = Route;
-public badgeNumber: number = 0;
-public $badgeNumber: Subscription = new Subscription;
-constructor(public ui: UiService, 
+public route = Route;
+
+constructor(public ui: UiService, public pantry: PantryService
   ){
-    this.$badgeNumber = ui
+    
   }
+  // public getPantry() {
+
+  // }
 }

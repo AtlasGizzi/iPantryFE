@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { Account } from '../data/account';
+import { UiService } from '../ui/ui.service';
+import { Route } from '../ui/route';
 
 
 @Injectable({
@@ -15,7 +17,7 @@ export class LoginService {
   }
 
   constructor(
-    private http: HttpClient,
+    private http: HttpClient, public ui: UiService
 
   ) { }
   
@@ -28,6 +30,10 @@ export class LoginService {
         this._isAuthenticated = true;
       })
     );
+  }
+  logout()
+  {localStorage.clear()
+    this.ui.navigate(Route.HOME)
   }
 
 }

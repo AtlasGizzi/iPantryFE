@@ -1,56 +1,20 @@
-<p>navigation works!</p>
-<mat-toolbar color="primary">
+<!-- <p>navigation works!</p>
+<mat-toolbar>
     <mat-toolbar-row>
       <div class="nav-left">
-        <div>
-          <button mat-icon-button (click)="ui.toggleSideNav()">
-            <mat-icon>menu</mat-icon>
-          </button>
-        </div>
   
-        <span
-          class="nav-logo"
-          (click)="ui.navigate(Route.HOME); pantry.getAllInventory()"
-          >iPantry
-        </span>
+        <span>iPantry</span>
       </div>
-  
-      <div class="nav-center">
-        <!-- <app-search-bar></app-search-bar> -->
-      </div>
-  
-      <div class="nav-right">
-        <!-- <button
-          mat-icon-button
-          title="Create new inventory!"
-          (click)="ui.navigate(Route.INVENTORY_PAGE)"
-        >
-          <mat-icon>add_box</mat-icon>
-        </button> -->
-  
-        <button
-          mat-icon-button
-          title="Create an account!"
-          (click)="ui.navigate(Route.REGISTER)"
-        >
-          <mat-icon>person_add</mat-icon>
+
+      <button mat-button [matMenuTriggerFor]="menu" [ngSwitch]="ui.getCurrentRoute()">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <app-pantry *ngSwitchCase="route.PANTRY"></app-pantry>
+          <mat-icon>kitchen</mat-icon>
         </button>
-  
-        <button
-          mat-icon-button
-          title="Go to {{pantry.name}}!"
-          (click)="ui.navigate(Route.ACCOUNT)"
-          (click)="ui.getPantry()"
-        >
-          <!--- UicartService.getCurrentItems() is quick and dirty added by Bear for sheer functionality -->
-          <mat-icon
-            [matBadge]="badgeNumber"
-            matBadgePosition="after"
-            matBadgeColor="accent"
-            matBadgeSize="small"
-            >shopping_cart</mat-icon
-          >
-        </button>
-      </div>
+        <button mat-menu-item></button>
+      </mat-menu>
+        
+     
     </mat-toolbar-row>
-  </mat-toolbar>
+  </mat-toolbar> -->

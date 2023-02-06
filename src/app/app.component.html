@@ -1,9 +1,10 @@
-<app-login></app-login>
-<mat-sidenav-content [ngSwitch]="ui.getCurrentRoute()">
-    <app-account *ngSwitchCase="route.ACCOUNT"></app-account>
-    <app-pantry *ngSwitchCase="route.PANTRY"></app-pantry>
-    <app-recipes *ngSwitchCase="route.RECIPES"></app-recipes>
-    <app-navigation></app-navigation>
-    <app-make-this-recipe *ngSwitchCase="route.MAKETHISRECIPE"></app-make-this-recipe>
-    <app-reddit></app-reddit>
-</mat-sidenav-content>
+<div class="container">
+    <app-navbar></app-navbar>
+    <div id="main" [ngSwitch]="ui.getCurrentRoute()">
+        <app-home class="page" *ngSwitchCase = "route.HOME"></app-home>
+        <app-pantry *ngSwitchCase="route.PANTRY"></app-pantry>
+        <app-account *ngSwitchCase="route.ACCOUNT"></app-account>
+        <app-account *ngSwitchCase="route.FAMILYCONNECT"></app-account>
+        <app-account *ngSwitchCase="route.RECIPES"></app-account>
+    </div>
+</div>

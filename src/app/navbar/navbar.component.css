@@ -1,0 +1,15 @@
+h1 {
+    margin: 3px;
+    padding: 3px;
+    color: whitesmoke;
+    font-family:'Montserrat', sans-serif;
+
+}
+mat-toolbar-row {
+    background-color:rgb(114, 147, 160);
+}
+button {
+    margin: 3px;
+    border: none;
+    border-radius: 4px;
+}

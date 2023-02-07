@@ -1,11 +1,11 @@
 form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
+   
+    padding: 20px;
 }
 button {
     margin: auto;
+    position: relative;
+    left: 25%;
     padding: 10px;
     background-color: rgb(114, 147, 160);
     color: whitesmoke;

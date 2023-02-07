@@ -24,17 +24,23 @@ import { LoginService } from '../Service/login.service';
 //     this._account = null;
 //   }
 export class LoginComponent implements OnInit{
- 
+  password: string ="";
+  email: string= "";
   private _account: any;
   get account() {
     return this._account;
   }
   
-  constructor(private LoginService: LoginService) {}
+  constructor(private loginService: LoginService) {
+    
+  }
   
- 
+ login()
+ {
+  this.loginService.login(this.password, this.email)
+ }
   ngOnInit() {
-    this._account = this.LoginService.account;
+    this._account = this.loginService.account;
    
   }
   //I know this isn't right.

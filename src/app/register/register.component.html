@@ -2,11 +2,11 @@
 
     <form id="form" ngForm (ngSubmit)="registerAccount()">
         
-        <mat-form-field appearance="fill">
+        <mat-form-field >
             <mat-label>Email</mat-label>
             <input name="email" type="email" matInput [(ngModel)]="email" placeholder="email@email.com">
         </mat-form-field><br>
-        <mat-form-field appearance="fill">
+        <mat-form-field >
             <mat-label>Password</mat-label>
             <input name="password" matInput type="password" [(ngModel)]="password">
         </mat-form-field><br>
@@ -14,11 +14,11 @@
             <mat-label>Your Pantry</mat-label>
             <input name="pantry" matInput type="input" [(ngModel)]="pantry">
         </mat-form-field><br> -->
-        <mat-form-field appearance="fill">
+        <mat-form-field >
             <mat-label>First Name</mat-label>
             <input name="firstName" matInput  [(ngModel)]="firstName">
         </mat-form-field><br>
-        <mat-form-field appearance="fill">
+        <mat-form-field >
             <mat-label>Last Name</mat-label>
             <input name="lastName" matInput [(ngModel)]="lastName">
             

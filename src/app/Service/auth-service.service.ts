@@ -18,9 +18,7 @@ export class AuthService {
   constructor(private http: HttpClient, private ui: UiService) {
     this.getPersistLogin();
   }
-  public getFirstName(): string | undefined {
-    return this.currentAccount?.firstName;
-  }
+ 
   
   login(pass: string, email: string) {
     // Send a login request to the server
@@ -33,34 +31,39 @@ export class AuthService {
         console.log(data)}
       });
     }
-    
-    logout() {
-      // Send a logout request to the server
-      return this.http.post('https://localhost:7287/api/logout',{}).pipe(
-        take(1)) 
-        .subscribe({
-          next: () => {
-          // Clear the user's information and authentication state
-          this.currentAccount = null;
-          this._isAuthenticated = false;
-          }
-        });
+    public getFirstName(): string | undefined {
+      if (this._isAuthenticated == true) {
+        return this.currentAccount?.firstName;
       }
-      
-      isAuthenticated() {
-        return this._isAuthenticated
-      }
-      
-      public getPersistLogin() {
-        let userData = localStorage.getItem('user_data');
-        let currentRoute = localStorage.getItem('current_route');
-        
-        if (userData && currentRoute) {
-          this.currentAccount = JSON.parse(userData);
-          this.$currentAccount.next(this.currentAccount);
-          this.ui.setCurrentRoute(JSON.parse(currentRoute));
+      return undefined;
+    }
+  logout() {
+    // Send a logout request to the server
+    return this.http.post('https://localhost:7287/api/logout',{}).pipe(
+      take(1)) 
+      .subscribe({
+        next: () => {
+        // Clear the user's information and authentication state
+        this.currentAccount = null;
+        this._isAuthenticated = false;
         }
+      });
+    }
+    
+    isAuthenticated() {
+      return this._isAuthenticated
+    }
+    
+    public getPersistLogin() {
+      let userData = localStorage.getItem('user_data');
+      let currentRoute = localStorage.getItem('current_route');
+      
+      if (userData && currentRoute) {
+        this.currentAccount = JSON.parse(userData);
+        this.$currentAccount.next(this.currentAccount);
+        this.ui.setCurrentRoute(JSON.parse(currentRoute));
       }
+    }
       // get user() {
         //   return this.currentAccount;
         // }

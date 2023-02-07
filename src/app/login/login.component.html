@@ -1,5 +1,18 @@
 <div class="container">
-    <button>
-    Already have an account? <br> Login here!
+<div class="blue">
+    Have an account? <br> Login below!
+</div>
+<form class="form" ngForm (ngSubmit)="login()">
+    <mat-form-field type="email">
+        <mat-label>Email</mat-label>
+        <input name="email" type="email" matInput [(ngModel)]="email" placeholder="email@email.com">
+    </mat-form-field>
+    <mat-form-field type="password">
+        <mat-label>Password</mat-label>
+        <input name="password" matInput type="password" [(ngModel)]="password">
+    </mat-form-field>
+</form>
+<button class = "blue" type="submit">
+    Login
 </button>
 </div>

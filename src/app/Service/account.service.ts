@@ -15,12 +15,11 @@ export class AccountService {
  private pathurl = 'https://localhost:7287/api/'
  constructor(
     private http: HttpClient,
-    private Account: Account,
     private auth: AuthService,
     private ui: UiService, 
     private errorAlert: ErrorAlertService
   ) { }
-  
+  private account: Account | null = null
   public getAllAccounts() : Observable<Account[]>
   {
     return this.http.get<Account[]>(this.pathurl + `Account`);
@@ -32,7 +31,7 @@ export class AccountService {
     .pipe(take(1))
     .subscribe({
       next: (res) => {
-        this.Account = res;
+        this.account = res;
       },
       error: () => console.log('error'),
     });

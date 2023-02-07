@@ -12,11 +12,11 @@ import { ErrorAlertService } from './error-alert.service';
   providedIn: 'root'
 })
 export class LoginService {
-  private _account: any;
+  // private _account: any;
   private _isAuthenticated: boolean = false;
-  get account() {
-    return this._account;
-  }
+  // get account() {
+  //   return this._account;
+  // }
 
   constructor(
     public err : ErrorAlertService, 
@@ -25,17 +25,10 @@ export class LoginService {
     public auth: AuthService
   ) {  }
 
-    login(password: string, email: string) {
-      this.auth.login(password, email)
-      if (this.auth.isAuthenticated()) {
-          this.ui.navigate(Route.RECIPES);
-        } else {
-          this.err.showError("Login not Authenticated. Check email and password.")
-        }
-      };
+  
     
  
-  logout()
+  public logout()
   {localStorage.clear()
     this.ui.navigate(Route.HOME)
   }

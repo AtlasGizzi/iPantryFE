@@ -4,83 +4,118 @@ import { take, tap } from 'rxjs/operators';
 import { UiService } from '../ui/ui.service';
 import { Subject } from 'rxjs';
 import { Account } from '../data/account';
+import { Route } from '../ui/route';
+import { ErrorAlertService } from './error-alert.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private _isAuthenticated = false;
-
   public currentAccount: Account | null = null;
   public $currentAccount: Subject<Account | null> = new Subject();
-  
+  public pathurl: string = "https://localhost:7287/api/"
 
-  constructor(private http: HttpClient, private ui: UiService) {
+  constructor( private errorAlert: ErrorAlertService, private http: HttpClient, private ui: UiService) {
     this.getPersistLogin();
+    
   }
- 
   
-  login(pass: string, email: string) {
-    // Send a login request to the server
-    return this.http.get<Account>(`https://localhost:7287/api/Account/{pass}/{email}`)
-    .pipe(take(1))
-    .subscribe({
-      next: (data) => {
-        this.currentAccount = data,
-        this._isAuthenticated = true; 
-        console.log(data)}
+  public ValidateLogin(email: string, password: string){
+    if (email == '' || email == null) {
+      this.errorAlert.showError('Enter Email')
+      return Promise.reject();
+    }
+    if (password == '' || password == null) {
+      this.errorAlert.showError('Enter Password')
+      return Promise.reject();
+    }
+    return this.SubmitLogin(email, password);
+  }
+  
+  private SubmitLogin(email: string, password: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Account>(this.pathurl + `Account/${email}/${password}`)
+      .pipe(take(1))
+      .subscribe({
+        next: data => {
+          this.currentAccount = data,
+          this.isAuthenticated(), 
+          console.log(data)
+          resolve(data);
+        },
+        error: err => {
+          this.errorAlert.showError("Email or Password Incorrect !")
+          reject(err);
+        }
       });
+    });
+  }
+  
+  public isAuthenticated(){
+    return this._isAuthenticated = true;
+  }
+  
+  public getPersistLogin() {
+    let userData = localStorage.getItem('user_data');
+    let currentRoute = localStorage.getItem('current_route');
+    
+    if (userData && currentRoute) {
+      this.currentAccount = JSON.parse(userData);
+      this.$currentAccount.next(this.currentAccount);
+      this.ui.setCurrentRoute(JSON.parse(currentRoute));
     }
-    public getFirstName(): string | undefined {
-      if (this._isAuthenticated == true) {
-        return this.currentAccount?.firstName;
-      }
-      return undefined;
+  }
+  
+  public getFirstName(): string | undefined {
+    if (this._isAuthenticated == true) {
+      return this.currentAccount?.firstName;
     }
-  logout() {
+    return undefined;
+  }
+  public logout() {
     // Send a logout request to the server
     return this.http.post('https://localhost:7287/api/logout',{}).pipe(
       take(1)) 
       .subscribe({
         next: () => {
-        // Clear the user's information and authentication state
-        this.currentAccount = null;
-        this._isAuthenticated = false;
+          // Clear the user's information and authentication state
+          this.currentAccount = null;
+          this._isAuthenticated = false;
         }
       });
     }
+  }
+  // get user() {
+    //   return this.currentAccount;
+    // }
     
-    isAuthenticated() {
-      return this._isAuthenticated
-    }
-    
-    public getPersistLogin() {
-      let userData = localStorage.getItem('user_data');
-      let currentRoute = localStorage.getItem('current_route');
+    // getaccountInfo() {
+      //   return this.currentAccount;
+      // }
       
-      if (userData && currentRoute) {
-        this.currentAccount = JSON.parse(userData);
-        this.$currentAccount.next(this.currentAccount);
-        this.ui.setCurrentRoute(JSON.parse(currentRoute));
-      }
-    }
-      // get user() {
-        //   return this.currentAccount;
-        // }
-
-      // getaccountInfo() {
-        //   return this.currentAccount;
-        // }
-      
-        // login(account: Account | undefined) {
+      // login(account: Account | undefined) {
         //   // Send a login request to the server
         //   return this.http.post('/api/login', account).pipe(
-        //     tap(res => {
-        //       // Store the user's information and authentication state
-        //       this.currentAccount = res;
-        //       this._isAuthenticated = true;
-        //     })
-        //   );
-        // }
-      }
-      
+          //     tap(res => {
+            //       // Store the user's information and authentication state
+            //       this.currentAccount = res;
+            //       this._isAuthenticated = true;
+            //     })
+            //   );
+            // }
+            
+            // private LoginSuccess(): void {
+    //   this.ui.navigate(Route.RECIPES);
+    // }
+    // public login(password: string, email: string) {
+    //   // Send a login request to the server
+    //   return this.http.get<Account>(`https://localhost:7287/api/Account/${password}/${email}`)
+    //   .pipe(take(1))
+    //   .subscribe({
+    //     next: (data) => {
+    //       this.currentAccount = data,
+    //       this._isAuthenticated = true; 
+    //       console.log(data)}
+    //     });
+    //   }

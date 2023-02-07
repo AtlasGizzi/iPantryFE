@@ -11,7 +11,7 @@ import { Route } from '../ui/route';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent  {
   // public accountData: Account | null = null
   // public route = Route
   

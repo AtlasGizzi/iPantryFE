@@ -8,6 +8,35 @@ import { LoginService } from '../Service/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+export class LoginComponent implements OnInit{
+  public password: string="";
+  public email: string= "";
+  private _account: any;
+  get account() {
+    return this._account;
+  }
+  
+  constructor(private loginService: LoginService,private authService: AuthService) {
+    
+  }
+  
+  public login(password:string, email:string) { 
+    this.authService.ValidateLogin(password, email)
+    .then(() => {
+      console.log("logged in");
+    });
+  }
+  
+  ngOnInit() {
+    this._account = this.authService.currentAccount;
+    
+  }
+  //I know this isn't right.
+}
+
+
+
+
 // export class AccountComponent implements OnInit {
 //   private _account: any;
 //   get account() {
@@ -23,28 +52,3 @@ import { LoginService } from '../Service/login.service';
 //     this.authService.logout();
 //     this._account = null;
 //   }
-export class LoginComponent implements OnInit{
-  password: string ="";
-  email: string= "";
-  private _account: any;
-  get account() {
-    return this._account;
-  }
-  
-  constructor(private loginService: LoginService) {
-    
-  }
-  
- login()
- {
-  this.loginService.login(this.password, this.email)
- }
-  ngOnInit() {
-    this._account = this.loginService.account;
-   
-  }
-  //I know this isn't right.
-}
-
-
-

@@ -21,7 +21,7 @@ export class AuthService {
     
   }
   
-  public ValidateLogin(email: string, password: string){
+  public ValidateLogin(email: string, password: string){ // this entire method either isn't being called or isn't working. Can "log in" with incorrect cred.
     if (email == '' || email == null) {
       this.errorAlert.showError('Enter Email')
       return Promise.reject();
@@ -34,12 +34,12 @@ export class AuthService {
   }
   
   private SubmitLogin(email: string, password: string): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => { //idk about this Promise reject resolve thing, ai suggested it
       this.http.get<Account>(this.pathurl + `Account/${email}/${password}`)
       .pipe(take(1))
       .subscribe({
         next: data => {
-          this.currentAccount = data,
+          this.currentAccount = data, //the problem is that the currentAccount basically does nothing. I want it to return the email and password in the console log
           this.isAuthenticated(), 
           console.log(data)
           resolve(data);

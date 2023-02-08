@@ -9,8 +9,8 @@ import { LoginService } from '../Service/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  public password: string="";
-  public email: string= "";
+  password: string ="";
+  email: string="";
   private _account: any;
   get account() {
     return this._account;

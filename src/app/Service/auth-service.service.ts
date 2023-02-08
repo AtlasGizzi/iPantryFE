@@ -21,8 +21,8 @@ export class AuthService {
     
   }
   
-  public ValidateLogin(email: string, password: string){ // this entire method either isn't being called or isn't working. Can "log in" with incorrect cred.
-    if (email == '' || email == null) {
+  public ValidateLogin(password: string, email: string ){ // this entire method either isn't being called or isn't working. Can "log in" with incorrect cred.
+    if (email == '' || email == null) { //does email == null mean it isn't in the database? how would it know that?
       this.errorAlert.showError('Enter Email')
       return Promise.reject();
     }

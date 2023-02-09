@@ -11,7 +11,7 @@ import { Route } from '../ui/route';
 export class PantryComponent implements OnInit {
 
   account: Account = {} as Account
-  firstName: string = "aaa"
+  firstName: string = ""
   lastName: string = ""
   email: string = ""
   password: string = ""

@@ -1,26 +1,70 @@
-div {
+
+span{
     display:flex;
     justify-content: center;
-
-}
-form {
-   
+    align-items: center;
+    margin: auto;
     padding: 20px;
+    flex-direction: column;
+    box-shadow: rgb(156, 155, 155);
 }
 button {
-    margin: auto;
-    position: relative;
-    left: 25%;
-    padding: 10px;
-    background-color: rgb(114, 147, 160);
-    color: whitesmoke;
+   
+  
+    background-color: rgb(114, 147, 160) !important;
+    color: whitesmoke !important;
     border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
+    margin: 20px;
     
 }
-mat-form-field {
-    border: none;
-    margin: auto;
+
+ul{
+    display:flex;
+    padding: 20px;
     border-radius: 5px;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
 }
+mat-card {
+    display:flex;
+    border: none;
+    box-shadow: rgb(156, 155, 155);
+    margin: 10px;
+    border-radius: 5px;
+    padding: 2px;
+    align-items: center;
+    justify-content: center;
+    
+}
+mat-card-header{
+    color:rgb(114, 147, 160);
+}
+table {
+    display: flex;
+    width: 100%;
+    border-radius: 5px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+  
+td {
+padding: 8px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+border-radius: 5px;
+}
+
+th {
+background-color: #f2f2f2;
+border-radius: 5px;
+}
+
+tr {
+background-color: #f2f2f2;
+border-radius: 5px;
+}
+  

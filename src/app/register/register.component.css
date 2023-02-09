@@ -7,8 +7,8 @@ button {
     position: relative;
     left: 25%;
     padding: 10px;
-    background-color: rgb(114, 147, 160);
-    color: whitesmoke;
+    background-color: rgb(114, 147, 160)!important;
+    color: whitesmoke !important;
     border: none;
     border-radius: 5px;
     font-size: 1.2em;
@@ -28,3 +28,4 @@ h1{
     background-color: rgb(226, 183, 153)
 
 }
+ 

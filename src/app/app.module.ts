@@ -29,6 +29,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatCardModule} from '@angular/material/card';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component'
 import { MatListModule } from '@angular/material/list' 
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { MatListModule } from '@angular/material/list'
     MatMenuModule,
     MatCardModule,
     MatListModule,
+    MatButtonModule
     
   ],
   providers: [],

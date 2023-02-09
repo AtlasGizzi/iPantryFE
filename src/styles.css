@@ -1,15 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Montserrat', sans-serif;
+body { 
+    margin: 0; 
+    font-family: 'Montserrat' , sans-serif !important;
     
-        background-image: linear-gradient(
-            rgba(35, 32, 32, 0.7),
-            rgba(248, 226, 205, 0.4)
-        ),
-         url(/assets/luisa-brimble-i-GPyFK_SJg-unsplash.jpg);
-        background-size: cover;
-        
+    background-image: linear-gradient(
+        rgba(35, 32, 32, 0.7),
+        rgba(248, 226, 205, 0.4)
+    ),
+        url(/assets/luisa-brimble-i-GPyFK_SJg-unsplash.jpg);
+    background-size: cover;
+    
       
 }
 

@@ -2,7 +2,7 @@
 <div class="blue">
     Have an account? <br> Login below!
 </div>
-<form class="form" ngForm (ngSubmit)="login(password, email)">
+<form class="form" (ngSubmit)="login()">
     <mat-form-field type="email">
         <mat-label>Email</mat-label>
         <input name="email" type="email" matInput [(ngModel)]="email" placeholder="email@email.com">

@@ -11,45 +11,48 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RegisterService {
   
   constructor(private http: HttpClient, public errorAlert: ErrorAlertService) { }
-  public SubmitRegister(firstName: string, lastName: string, email: string, password: string): void {
+  public SubmitRegister(firstName: string, lastName: string, email: string, password: string, pantry: string): void {
     let newAccount: Account = {
       firstName : firstName,
       lastName: lastName,
       email : email,
-      password : password
-      //pantry: pantry
+      password : password,
+      pantry: pantry
     }  
-    console.log(firstName)
-    this.http.post<Account>('https://localhost:7287/api/Account', newAccount)
-    .pipe(take(1))
-    .subscribe({
-      next: () => {
-        //redirect to login
-      },
-      error: (err) => {
-        console.error(err.message)
-        console.log(newAccount)
-      }})
-
+    if (this.ValidateRegister(email, password)){
+      this.http.post<Account>('https://localhost:7287/api/Account', newAccount)
+      .pipe(take(1))
+      .subscribe({
+        next: () => {
+          this.errorAlert.showError("Account registered! You may now log in.")
+        }
+      }) 
     }
-    public validateEmail(checkEmail: string){      
+     //else{
+    //     this.errorAlert.showError("Email not valid. Not registered.")
+      
+    //   }
+    }
+    
+    public validateEmail(email: string): boolean{      
       var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-      return emailPattern.test(checkEmail); 
+      return emailPattern.test(email); 
     } 
   
-    public ValidateRegister(email: string, password: string, snackbar: MatSnackBar): void {
+    public ValidateRegister(email: string, password: string){
       if (email == '' || email == null) {
         this.errorAlert.showError('Email Required')
-        return
+        return false;
       }
       if (password == '' || password == null) {
         this.errorAlert.showError('Password Required')
-        return
+        return false;
       }
       
       if (this.validateEmail(email) === false){
-        this.errorAlert.showError('Email does not meet requirements Ex: Example@example.com')
-        return
+        return this.errorAlert.showError('Email does not meet requirements Ex: Example@example.com')
+        
       }
+      else return true
   }
 }

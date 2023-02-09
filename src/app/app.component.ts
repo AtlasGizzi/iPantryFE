@@ -11,10 +11,11 @@ import { AuthService } from './Service/auth-service.service';
 })
 export class AppComponent{ 
   title = 'iPantryFE';
-  public route = Route; //I'm note sure why this works. Is it just saying that route value is the value of Route from Route? Is this an enum thing?
+  public route = Route; 
   
   constructor(public ui: UiService, public auth: AuthService) 
-  {
+  { this.ui.setCurrentRoute(this.route.HOME)
+    console.log(this.ui.getCurrentRoute())
   }
  
 }

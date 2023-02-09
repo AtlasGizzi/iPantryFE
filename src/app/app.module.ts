@@ -26,6 +26,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { HomeComponent } from './home/home.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MatCardModule} from '@angular/material/card';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component'
+import { MatListModule } from '@angular/material/list' 
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     RedditComponent,
     HomeComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    RecipeCardComponent,
+    
     
   ],
   imports: [
@@ -55,7 +60,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatSnackBarModule,
     MatSidenavModule,
     MatBadgeModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule,
+    MatListModule,
     
   ],
   providers: [],

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../Service/auth-service.service';
+import { Account } from '../data/account';
+import { UiService } from '../ui/ui.service';
+import { Route } from '../ui/route';
 
 @Component({
   selector: 'app-pantry',
@@ -7,17 +9,21 @@ import { AuthService } from '../Service/auth-service.service';
   styleUrls: ['./pantry.component.css']
 })
 export class PantryComponent implements OnInit {
-  public _isAuthenticated: boolean;
-  account: any;
 
-  constructor(public authService: AuthService) {
-    this._isAuthenticated = this.authService.isAuthenticated();
+  account: Account = {} as Account
+  firstName: string = "aaa"
+  lastName: string = ""
+  email: string = ""
+  password: string = ""
+  pantry: string = ""
+  constructor(public ui: UiService) {
+    
   }
 
   ngOnInit() {
-    if (!this._isAuthenticated) {
-      // Redirect the user to the login page or show a message
+    
+      this.ui.navigate(Route.PANTRY)
     }
-  }
+  
 }
 

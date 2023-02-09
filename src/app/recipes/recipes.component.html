@@ -1,1 +1,52 @@
 <p>recipes works!</p>
+<form (ngSubmit)="addRecipe(newRecipeName, newRecipeIngredients)">
+    <mat-form-field>
+      <input matInput [(ngModel)]="newRecipeName" name="newRecipeName" placeholder="Recipe name">
+    </mat-form-field>
+  
+    <div>
+      <mat-form-field>
+        <input matInput [(ngModel)]="recipeIngredient.name" name="newIngredientName" placeholder="Ingredient name">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input type="number" matInput [(ngModel)]="recipeIngredient.weight" name="newIngredientWeight" placeholder="Ingredient weight">
+      </mat-form-field>
+  
+      <button mat-raised-button type="button" (click)="addIngredient(recipeIngredient)">Add Ingredient</button>
+    </div>
+  
+      <table *ngIf="newRecipeIngredients.length > 0">
+        <thead>
+          <tr>
+            <th>Ingredient Name</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ingredient of newRecipeIngredients">
+            <td>{{ingredient.name}}</td>
+            <td>{{ingredient.weight}}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+    
+    <button mat-raised-button type="submit">Add Recipe</button>
+</form>
+  
+  
+<mat-list>
+    <mat-list-item *ngFor="let recipe of recipes">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{recipe.name}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </mat-list-item>
+  </mat-list>

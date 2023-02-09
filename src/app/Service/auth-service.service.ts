@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { take, tap } from 'rxjs/operators';
 import { UiService } from '../ui/ui.service';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Account } from '../data/account';
 import { Route } from '../ui/route';
 import { ErrorAlertService } from './error-alert.service';
@@ -11,51 +11,41 @@ import { ErrorAlertService } from './error-alert.service';
   providedIn: 'root'
 })
 export class AuthService {
-  private _isAuthenticated = false;
+  //private _isAuthenticated = false;
   public currentAccount: Account | null = null;
-  public $currentAccount: Subject<Account | null> = new Subject();
+  public $currentAccount: BehaviorSubject<Account | null> = new BehaviorSubject<Account | null>(null);
   public pathurl: string = "https://localhost:7287/api/"
+  private Route = Route;
 
   constructor( private errorAlert: ErrorAlertService, private http: HttpClient, private ui: UiService) {
-    this.getPersistLogin();
+     //this.getPersistLogin();
     
   }
-  
-  public ValidateLogin(password: string, email: string ){ // this entire method either isn't being called or isn't working. Can "log in" with incorrect cred.
-    if (email == '' || email == null) { //does email == null mean it isn't in the database? how would it know that?
-      this.errorAlert.showError('Enter Email')
-      return Promise.reject();
-    }
-    if (password == '' || password == null) {
-      this.errorAlert.showError('Enter Password')
-      return Promise.reject();
-    }
-    return this.SubmitLogin(email, password);
+
+  public get UserInfo(): Account | null {
+    return this.$currentAccount.value;
   }
   
-  private SubmitLogin(email: string, password: string): Promise<any> {
-    return new Promise((resolve, reject) => { //idk about this Promise reject resolve thing, ai suggested it
-      this.http.get<Account>(this.pathurl + `Account/${email}/${password}`)
-      .pipe(take(1))
-      .subscribe({
-        next: data => {
-          this.currentAccount = data, //the problem is that the currentAccount basically does nothing. I want it to return the email and password in the console log
-          this.isAuthenticated(), 
-          console.log(data)
-          resolve(data);
-        },
-        error: err => {
-          this.errorAlert.showError("Email or Password Incorrect !")
-          reject(err);
-        }
-      });
-    });
+  
+  public SubmitLogin(email: string, password: string) {
+
+    return this.http.get<Account>(this.pathurl + `Account/${email}/${password}`);
   }
   
-  public isAuthenticated(){
-    return this._isAuthenticated = true;
+  // public isAuthenticated(){
+  //   return this._isAuthenticated;
+  // }
+  // public setAuthenticated(value:boolean){
+  //   if this.
+  //   }
+
+  public setPersistLogin(): void {
+    localStorage.setItem('user_data', JSON.stringify(this.currentAccount));
+    localStorage.setItem(
+      'current_route',
+      JSON.stringify(this.ui.getCurrentRoute())
+    );
   }
-  
   public getPersistLogin() {
     let userData = localStorage.getItem('user_data');
     let currentRoute = localStorage.getItem('current_route');
@@ -67,25 +57,18 @@ export class AuthService {
     }
   }
   
-  public getFirstName(): string | undefined {
-    if (this._isAuthenticated == true) {
-      return this.currentAccount?.firstName;
-    }
-    return undefined;
-  }
+  // public getFirstName(): string | undefined {
+   
+  //     return this.currentAccount?.firstName;
+  
+  // }
+  
   public logout() {
-    // Send a logout request to the server
-    return this.http.post('https://localhost:7287/api/logout',{}).pipe(
-      take(1)) 
-      .subscribe({
-        next: () => {
-          // Clear the user's information and authentication state
-          this.currentAccount = null;
-          this._isAuthenticated = false;
-        }
-      });
-    }
+    this.$currentAccount.next(null)
+    localStorage.removeItem('user_data')
+    };
   }
+  
   // get user() {
     //   return this.currentAccount;
     // }

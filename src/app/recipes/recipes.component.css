@@ -1,0 +1,26 @@
+div {
+    display:flex;
+    justify-content: center;
+
+}
+form {
+   
+    padding: 20px;
+}
+button {
+    margin: auto;
+    position: relative;
+    left: 25%;
+    padding: 10px;
+    background-color: rgb(114, 147, 160);
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    
+}
+mat-form-field {
+    border: none;
+    margin: auto;
+    border-radius: 5px;
+}

@@ -5,6 +5,7 @@ export class Recipes {
         public id?: number,
         public name: string = "",
         public ingredients: RecipeIngredient[]= [],
+        public instructions: string = "",
         
         ){}
 }

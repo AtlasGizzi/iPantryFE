@@ -1,5 +1,5 @@
 
-<span (ngSubmit)="addRecipe(newRecipeName, newRecipeIngredients)">
+<span (ngSubmit)="addRecipe(newRecipeName, newRecipeIngredients, newRecipeInstructions)">
   <mat-form-field>
     <input matInput [(ngModel)]="newRecipeName" name="newRecipeName" placeholder="Recipe name">
   </mat-form-field>
@@ -25,6 +25,9 @@
       </tr>
     </tbody>
   </table>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="newRecipeInstructions" name="newRecipeInstructions" placeholder="Recipe Instructions"></textarea> 
+  </mat-form-field>
 
   <button mat-raised-button *ngIf="newRecipeIngredients.length >= 1" type="submit">Add Recipe</button>
 </span>

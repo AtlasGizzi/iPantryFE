@@ -1,23 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RecipeIngredient } from '../data/recipe-ingredients';
 import { Recipes } from '../data/recipes';
+import { RecipeService } from '../Service/recipe.service';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css']
 })
-export class RecipesComponent {
+export class RecipesComponent implements OnInit {
+  recipes: Recipes[] = []
 
-  constructor(){}
+  constructor(public recServe: RecipeService){}
 
-  recipes: Recipes[] = [
-    { name: 'Recipe 1', ingredients: [] },
-    { name: 'Recipe 2', ingredients: [] },
-    // ...
-  ];
-  
+  // recipes: Recipes[] = [
+  //   { name="", ingredients: [] },
+  //   { name, ingredients: [] },
+  //   // ...
+  // ];
+  ngOnInit (){
+    this.recServe.GetAllRecipes().subscribe(recipes => {this.recipes = recipes;})
+  }
   newRecipeName = '';
+  newRecipeInstructions = "";
   
   newRecipeIngredients: RecipeIngredient[] = [];
   
@@ -31,13 +36,13 @@ export class RecipesComponent {
     this.newRecipeIngredients.push(recipeIngredient)
   }
 
-  addRecipe(name: string, ingredients: RecipeIngredient[]) {
+  addRecipe(name: string, ingredients: RecipeIngredient[], instructions: string) {
     const maxId = this.recipes.reduce((max, recipe) => {
       return recipe.id && recipe.id > max ? recipe.id : max;
     }, 0);
     
     const newId = maxId + 1;
-    this.recipes.push(new Recipes(newId, name, ingredients));
+    this.recipes.push(new Recipes(newId, name, ingredients, instructions));
   }
 }
 

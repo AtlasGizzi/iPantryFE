@@ -15,11 +15,8 @@ export class AccountService {
  private pathurl = 'https://localhost:7287/api/'
  constructor(
     private http: HttpClient,
-    private auth: AuthService,
-    private ui: UiService, 
-    private errorAlert: ErrorAlertService
   ) { }
-  private account: Account | null = null
+  public account: Account | null = null
   
   public editAccount(account: Account) 
   {

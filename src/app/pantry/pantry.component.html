@@ -1,9 +1,21 @@
-<p>pantry works!</p>
-<div >
-    <p>Welcome</p>
+<div>
+  <h3>{{firstName}}'s Pantry</h3>
+  <ul>
+    <mat-list-item *ngFor="let pantryItem of pantryItems">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{pantryItem.name}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          {{pantryItem.weight}}
+        </mat-card-content>
+      </mat-card>
+    </mat-list-item>
+  </ul>
+
+</div>
+ 
     
-  </div>
-  <div >
-    <p>Please log in to access your pantry</p>
-  </div>
+
+  
   

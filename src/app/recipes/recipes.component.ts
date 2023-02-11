@@ -20,6 +20,7 @@ export class RecipesComponent implements OnInit {
   // ];
   ngOnInit (){
     this.recServe.GetAllRecipes().subscribe(recipes => {this.recipes = recipes;})
+    console.log(this.recipes)
   }
   newRecipeName = '';
   newRecipeInstructions = "";
@@ -35,14 +36,15 @@ export class RecipesComponent implements OnInit {
   {
     this.newRecipeIngredients.push(recipeIngredient)
   }
-
+  
   addRecipe(name: string, ingredients: RecipeIngredient[], instructions: string) {
-    const maxId = this.recipes.reduce((max, recipe) => {
-      return recipe.id && recipe.id > max ? recipe.id : max;
-    }, 0);
-    
-    const newId = maxId + 1;
-    this.recipes.push(new Recipes(newId, name, ingredients, instructions));
+    this.recServe.SubmitRecipe(name, ingredients, instructions);
   }
+    // const maxId = this.recipes.reduce((max, recipe) => {
+    //   return recipe.id && recipe.id > max ? recipe.id : max;
+    // }, 0);
+    
+    // const newId = maxId + 1;
+    // this.recipes.push(new Recipes(newId, name, ingredients, instructions));
 }
 

@@ -1,0 +1,30 @@
+div {
+    
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 20px;
+        flex-direction: column;
+        box-shadow: rgb(156, 155, 155);
+    }
+    button {
+   
+  
+        background-color: rgb(114, 147, 160) !important;
+        color: whitesmoke !important;
+        border: none;
+        margin: 20px;
+        
+    }
+    mat-card {
+        display:flex;
+        border: none;
+        box-shadow: rgb(156, 155, 155);
+        margin: 10px;
+        border-radius: 5px;
+        padding: 2px;
+        align-items: center;
+        justify-content: center;
+        
+    }

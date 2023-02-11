@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Account } from '../data/account';
 import { UiService } from '../ui/ui.service';
 import { Route } from '../ui/route';
+import { PantryItem } from '../data/pantryItem';
 
 @Component({
   selector: 'app-pantry',
@@ -19,7 +20,7 @@ export class PantryComponent implements OnInit {
   constructor(public ui: UiService) {
     
   }
-
+ pantryItems: PantryItem[] = [];
   ngOnInit() {
     
       this.ui.navigate(Route.PANTRY)
